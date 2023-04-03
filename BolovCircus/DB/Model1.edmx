@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище GunBolCircusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="IDAnimal" />
+          </Key>
+          <Property Name="IDAnimal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimalShow">
+          <Key>
+            <PropertyRef Name="IDAnimal" />
+            <PropertyRef Name="IDShow" />
+          </Key>
+          <Property Name="IDAnimal" Type="int" Nullable="false" />
+          <Property Name="IDShow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IDCity" />
+          </Key>
+          <Property Name="IDCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IDGender" />
+          </Key>
+          <Property Name="IDGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="IDPicture" />
+          </Key>
+          <Property Name="IDPicture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IDShow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poster">
+          <Key>
+            <PropertyRef Name="IDPoster" />
+          </Key>
+          <Property Name="IDPoster" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="IDShow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Show">
+          <Key>
+            <PropertyRef Name="IDShow" />
+          </Key>
+          <Property Name="IDShow" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCity" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="AgeLimit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShowTag">
+          <Key>
+            <PropertyRef Name="IDShow" />
+            <PropertyRef Name="IDTag" />
+          </Key>
+          <Property Name="IDShow" Type="int" Nullable="false" />
+          <Property Name="IDTag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="IDTag" />
+          </Key>
+          <Property Name="IDTag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="IDTicket" />
+          </Key>
+          <Property Name="IDTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPoster" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="Place" Type="int" Nullable="false" />
+          <Property Name="Row" Type="int" Nullable="false" />
+          <Property Name="VIP" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDGender" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="40" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IDRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="IDVoucher" />
+          </Key>
+          <Property Name="IDVoucher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherTicket">
+          <Key>
+            <PropertyRef Name="IDVoucher" />
+            <PropertyRef Name="IDTicket" />
+          </Key>
+          <Property Name="IDVoucher" Type="int" Nullable="false" />
+          <Property Name="IDTicket" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AnimalSho__IDAni__48CFD27E">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="AnimalShow" Type="Self.AnimalShow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="IDAnimal" />
+            </Principal>
+            <Dependent Role="AnimalShow">
+              <PropertyRef Name="IDAnimal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnimalSho__IDSho__49C3F6B7">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="AnimalShow" Type="Self.AnimalShow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="AnimalShow">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Picture__IDShow__45F365D3">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Poster__IDShow__5441852A">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="Poster" Type="Self.Poster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="Poster">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Show__IDCity__3F466844">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Show" Type="Self.Show" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="IDCity" />
+            </Principal>
+            <Dependent Role="Show">
+              <PropertyRef Name="IDCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShowTag__IDShow__4222D4EF">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="ShowTag" Type="Self.ShowTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="ShowTag">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShowTag__IDTag__4316F928">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="ShowTag" Type="Self.ShowTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="IDTag" />
+            </Principal>
+            <Dependent Role="ShowTag">
+              <PropertyRef Name="IDTag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__IDPoster__59FA5E80">
+          <End Role="Poster" Type="Self.Poster" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poster">
+              <PropertyRef Name="IDPoster" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IDPoster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDGender__5070F446">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IDGender" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDRole__5165187F">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voucher__IDUser__571DF1D5">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Voucher">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VoucherTi__IDTic__5EBF139D">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="VoucherTicket" Type="Self.VoucherTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="IDTicket" />
+            </Principal>
+            <Dependent Role="VoucherTicket">
+              <PropertyRef Name="IDTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VoucherTi__IDVou__5DCAEF64">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="1" />
+          <End Role="VoucherTicket" Type="Self.VoucherTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="IDVoucher" />
+            </Principal>
+            <Dependent Role="VoucherTicket">
+              <PropertyRef Name="IDVoucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище GunBolCircusModelContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimalShow" EntityType="Self.AnimalShow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poster" EntityType="Self.Poster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShowTag" EntityType="Self.ShowTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherTicket" EntityType="Self.VoucherTicket" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AnimalSho__IDAni__48CFD27E" Association="Self.FK__AnimalSho__IDAni__48CFD27E">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="AnimalShow" EntitySet="AnimalShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnimalSho__IDSho__49C3F6B7" Association="Self.FK__AnimalSho__IDSho__49C3F6B7">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="AnimalShow" EntitySet="AnimalShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Picture__IDShow__45F365D3" Association="Self.FK__Picture__IDShow__45F365D3">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Poster__IDShow__5441852A" Association="Self.FK__Poster__IDShow__5441852A">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Poster" EntitySet="Poster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Show__IDCity__3F466844" Association="Self.FK__Show__IDCity__3F466844">
+            <End Role="City" EntitySet="City" />
+            <End Role="Show" EntitySet="Show" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShowTag__IDShow__4222D4EF" Association="Self.FK__ShowTag__IDShow__4222D4EF">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="ShowTag" EntitySet="ShowTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShowTag__IDTag__4316F928" Association="Self.FK__ShowTag__IDTag__4316F928">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="ShowTag" EntitySet="ShowTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__IDPoster__59FA5E80" Association="Self.FK__Ticket__IDPoster__59FA5E80">
+            <End Role="Poster" EntitySet="Poster" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDGender__5070F446" Association="Self.FK__Users__IDGender__5070F446">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDRole__5165187F" Association="Self.FK__Users__IDRole__5165187F">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voucher__IDUser__571DF1D5" Association="Self.FK__Voucher__IDUser__571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Voucher" EntitySet="Voucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VoucherTi__IDTic__5EBF139D" Association="Self.FK__VoucherTi__IDTic__5EBF139D">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="VoucherTicket" EntitySet="VoucherTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VoucherTi__IDVou__5DCAEF64" Association="Self.FK__VoucherTi__IDVou__5DCAEF64">
+            <End Role="Voucher" EntitySet="Voucher" />
+            <End Role="VoucherTicket" EntitySet="VoucherTicket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GunBolCircusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="IDAnimal" />
+          </Key>
+          <Property Name="IDAnimal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.AnimalShow" FromRole="Animal" ToRole="Show" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IDCity" />
+          </Key>
+          <Property Name="IDCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.FK__Show__IDCity__3F466844" FromRole="City" ToRole="Show" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IDGender" />
+          </Key>
+          <Property Name="IDGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__IDGender__5070F446" FromRole="Gender" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="IDPicture" />
+          </Key>
+          <Property Name="IDPicture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Picture1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDShow" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.FK__Picture__IDShow__45F365D3" FromRole="Picture" ToRole="Show" />
+        </EntityType>
+        <EntityType Name="Poster">
+          <Key>
+            <PropertyRef Name="IDPoster" />
+          </Key>
+          <Property Name="IDPoster" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="IDShow" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.FK__Poster__IDShow__5441852A" FromRole="Poster" ToRole="Show" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK__Ticket__IDPoster__59FA5E80" FromRole="Poster" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__IDRole__5165187F" FromRole="Role" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Show">
+          <Key>
+            <PropertyRef Name="IDShow" />
+          </Key>
+          <Property Name="IDShow" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCity" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AgeLimit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Show__IDCity__3F466844" FromRole="Show" ToRole="City" />
+          <NavigationProperty Name="Picture" Relationship="Self.FK__Picture__IDShow__45F365D3" FromRole="Show" ToRole="Picture" />
+          <NavigationProperty Name="Poster" Relationship="Self.FK__Poster__IDShow__5441852A" FromRole="Show" ToRole="Poster" />
+          <NavigationProperty Name="Animal" Relationship="Self.AnimalShow" FromRole="Show" ToRole="Animal" />
+          <NavigationProperty Name="Tag" Relationship="Self.ShowTag" FromRole="Show" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="IDTag" />
+          </Key>
+          <Property Name="IDTag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.ShowTag" FromRole="Tag" ToRole="Show" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="IDTicket" />
+          </Key>
+          <Property Name="IDTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPoster" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="Place" Type="Int32" Nullable="false" />
+          <Property Name="Row" Type="Int32" Nullable="false" />
+          <Property Name="VIP" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Poster" Relationship="Self.FK__Ticket__IDPoster__59FA5E80" FromRole="Ticket" ToRole="Poster" />
+          <NavigationProperty Name="Voucher" Relationship="Self.VoucherTicket" FromRole="Ticket" ToRole="Voucher" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDGender" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Users__IDGender__5070F446" FromRole="Users" ToRole="Gender" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Users__IDRole__5165187F" FromRole="Users" ToRole="Role" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK__Voucher__IDUser__571DF1D5" FromRole="Users" ToRole="Voucher" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="IDVoucher" />
+          </Key>
+          <Property Name="IDVoucher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalCost" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Voucher__IDUser__571DF1D5" FromRole="Voucher" ToRole="Users" />
+          <NavigationProperty Name="Ticket" Relationship="Self.VoucherTicket" FromRole="Voucher" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FK__Show__IDCity__3F466844">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Show" Type="Self.Show" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="IDCity" />
+            </Principal>
+            <Dependent Role="Show">
+              <PropertyRef Name="IDCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDGender__5070F446">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IDGender" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Picture__IDShow__45F365D3">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Poster__IDShow__5441852A">
+          <End Role="Show" Type="Self.Show" Multiplicity="1" />
+          <End Role="Poster" Type="Self.Poster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="IDShow" />
+            </Principal>
+            <Dependent Role="Poster">
+              <PropertyRef Name="IDShow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__IDPoster__59FA5E80">
+          <End Role="Poster" Type="Self.Poster" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poster">
+              <PropertyRef Name="IDPoster" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IDPoster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDRole__5165187F">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voucher__IDUser__571DF1D5">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Voucher">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AnimalShow">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <End Role="Show" Type="Self.Show" Multiplicity="*" />
+        </Association>
+        <Association Name="ShowTag">
+          <End Role="Show" Type="Self.Show" Multiplicity="*" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+        </Association>
+        <Association Name="VoucherTicket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animal" EntityType="Self.Animal" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" />
+          <EntitySet Name="Poster" EntityType="Self.Poster" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Show" EntityType="Self.Show" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" />
+          <AssociationSet Name="FK__Show__IDCity__3F466844" Association="Self.FK__Show__IDCity__3F466844">
+            <End Role="City" EntitySet="City" />
+            <End Role="Show" EntitySet="Show" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDGender__5070F446" Association="Self.FK__Users__IDGender__5070F446">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Picture__IDShow__45F365D3" Association="Self.FK__Picture__IDShow__45F365D3">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Poster__IDShow__5441852A" Association="Self.FK__Poster__IDShow__5441852A">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Poster" EntitySet="Poster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__IDPoster__59FA5E80" Association="Self.FK__Ticket__IDPoster__59FA5E80">
+            <End Role="Poster" EntitySet="Poster" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDRole__5165187F" Association="Self.FK__Users__IDRole__5165187F">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voucher__IDUser__571DF1D5" Association="Self.FK__Voucher__IDUser__571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Voucher" EntitySet="Voucher" />
+          </AssociationSet>
+          <AssociationSet Name="AnimalShow" Association="Self.AnimalShow">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Show" EntitySet="Show" />
+          </AssociationSet>
+          <AssociationSet Name="ShowTag" Association="Self.ShowTag">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="VoucherTicket" Association="Self.VoucherTicket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Voucher" EntitySet="Voucher" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GunBolCircusModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GunBolCircusModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GunBolCircusModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="GunBolCircusModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Picture">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="IDPicture" ColumnName="IDPicture" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture" />
+                <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poster">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Poster">
+              <MappingFragment StoreEntitySet="Poster">
+                <ScalarProperty Name="IDPoster" ColumnName="IDPoster" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Show">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Show">
+              <MappingFragment StoreEntitySet="Show">
+                <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+                <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AgeLimit" ColumnName="AgeLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GunBolCircusModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tag">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="IDTag" ColumnName="IDTag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="IDTicket" ColumnName="IDTicket" />
+                <ScalarProperty Name="IDPoster" ColumnName="IDPoster" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="VIP" ColumnName="VIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voucher">
+            <EntityTypeMapping TypeName="GunBolCircusModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AnimalShow" TypeName="GunBolCircusModel.AnimalShow" StoreEntitySet="AnimalShow">
+            <EndProperty Name="Animal">
+              <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+            </EndProperty>
+            <EndProperty Name="Show">
+              <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ShowTag" TypeName="GunBolCircusModel.ShowTag" StoreEntitySet="ShowTag">
+            <EndProperty Name="Show">
+              <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+            </EndProperty>
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="IDTag" ColumnName="IDTag" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="VoucherTicket" TypeName="GunBolCircusModel.VoucherTicket" StoreEntitySet="VoucherTicket">
+            <EndProperty Name="Ticket">
+              <ScalarProperty Name="IDTicket" ColumnName="IDTicket" />
+            </EndProperty>
+            <EndProperty Name="Voucher">
+              <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище GunBolCircusModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище GunBolCircusModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище GunBolCircusModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище GunBolCircusModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GunBolCircusModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище GunBolCircusModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GunBolCircusModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище GunBolCircusModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище GunBolCircusModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

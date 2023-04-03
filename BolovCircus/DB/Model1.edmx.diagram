@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffad19474c944a7ba37b1149939ec77a" Name="Diagram1">
+        <EntityTypeShape EntityType="GunBolCircusModel.Animal" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.City" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Gender" Width="1.5" PointX="8.375" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Picture" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Poster" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Role" Width="1.5" PointX="8.375" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Show" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Tag" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Ticket" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Users" Width="1.5" PointX="10.625" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GunBolCircusModel.Voucher" Width="1.5" PointX="9.75" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Show__IDCity__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Users__IDGender__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Picture__IDShow__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Poster__IDShow__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Ticket__IDPoster__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Users__IDRole__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.FK__Voucher__IDUser__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.AnimalShow" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.ShowTag" ManuallyRouted="false" />
+        <AssociationConnector Association="GunBolCircusModel.VoucherTicket" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

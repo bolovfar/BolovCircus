@@ -1,0 +1,53 @@
+﻿<Window x:Class="BolovCircus.Windows.Admin.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BolovCircus.Windows.Admin"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="AdminWindow" Height="450" Width="800">
+    <Grid>
+      
+            <Button x:Name="btnLogoInfo"
+                    VerticalAlignment="Top"
+                    Margin="0 10"
+                    Width="104"
+                    Height="104"
+                    Background="Transparent"
+                    BorderThickness="0">
+                <Image Source="\Resourses\logo.png"
+                       Width="100" 
+                       Height="100">
+                </Image>
+            </Button>
+            <Button x:Name="btnListOfClientWindow"
+                    Content="Список клиентов"
+                    Style="{StaticResource ButtonAdmin}"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+            <Button x:Name="btnListOfShowWindow"
+                    Content="Список шоу"
+                    Style="{StaticResource ButtonAdmin}"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"/>
+        <TextBlock Text="Список сотрудников"
+                   HorizontalAlignment="Center"
+                   Margin="0 120 "/>
+        
+        <DataGrid Height="280"
+                      VerticalAlignment="Bottom">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Номер"/>
+                    <DataGridTextColumn Header="Логин"/>
+                    <DataGridTextColumn Header="Пароль"/>
+                    <DataGridTextColumn Header="Имя"/>
+                    <DataGridTextColumn Header="Фамилия"/>
+                    <DataGridTextColumn Header="Телефон"/>
+                    <DataGridTextColumn Header="Дата рождения"/>
+                    <DataGridTextColumn Header="Пол"/>
+                </DataGrid.Columns>
+            </DataGrid>
+    </Grid>
+</Window>

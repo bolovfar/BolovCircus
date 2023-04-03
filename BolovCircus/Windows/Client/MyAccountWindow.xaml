@@ -1,0 +1,121 @@
+﻿<Window x:Class="BolovCircus.Windows.Client.MyAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BolovCircus.Windows.Client"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MyAccountWindow" Height="650" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="140"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="242*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnLogoInfo"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    BorderThickness="0" Margin="33,8,33,8">
+            <Image Source="\Resourses\logo.png"
+                       Width="100" 
+                       Height="100">
+            </Image>
+        </Button>
+        
+        
+        <Label Content="Мои данные"
+               HorizontalAlignment="Center"
+               FontSize="16"
+               FontWeight="Bold"
+               Grid.Column="1"
+               Grid.Row="1"/>
+        <StackPanel
+                    Grid.Row="2"
+            
+                    Grid.ColumnSpan="2" 
+                    Grid.RowSpan="3">
+            
+
+            <TextBox x:Name="txtbLoginAccount"
+                     Text="Логин"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBlock Text="Введите старый пароль"
+                       HorizontalAlignment="Center"/>
+
+            <PasswordBox 
+                     x:Name="psbPasswordAccount"
+                     HorizontalAlignment="Center"
+                     Width="150"
+                     Margin="0 10"/>
+
+            <TextBlock Text="Введите новый пароль"
+                       HorizontalAlignment="Center"/>
+
+            <PasswordBox 
+                     x:Name="psbNewPasswordAccount"
+                     HorizontalAlignment="Center"
+                     Width="150"
+                     Margin="0 10"/>
+
+            <TextBox x:Name="txtbFirstNameAccount"
+                     Text="Имя"
+                      Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBox x:Name="txtbLastNameNameAccount"
+                     Text="Фамилия"
+                      Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <DatePicker Margin="0 10"
+                        x:Name="dpBirthdayAccount"
+                        Width="150"/>
+
+            <TextBox x:Name="txtbMailAccount"
+                     Text="bob@bob.boo"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBox x:Name="txtbPhoneAccount"
+                     Text="+7**********"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <ComboBox x:Name="cmbGenderAccount" 
+                      Margin="0 10"
+                      Width="150">
+            </ComboBox>
+
+            <ComboBox x:Name="cmbRoleAccount"
+                      Margin="0 10"
+                      Width="150">
+            </ComboBox>
+            <Button x:Name="btnOk"
+                    Content="Готово"
+                    Width="100"/>
+        </StackPanel>
+
+        <Image Source="\Resourses\Kanye.png"
+                       Width="100" 
+                       Height="100"
+               Grid.Column="1"
+               Grid.Row="2"
+               Margin="40 60 0 0"
+               VerticalAlignment="Top"
+               Grid.ColumnSpan="2">
+        </Image>
+
+        <Button x:Name="btnSelectImage"
+                Grid.Row="2"
+                Margin="40 0 0 100"
+                Content="Выбрать фото"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Width="120"
+                Height="25"></Button>
+
+    </Grid>
+</Window>

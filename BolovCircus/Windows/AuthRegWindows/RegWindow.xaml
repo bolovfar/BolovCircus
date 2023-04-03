@@ -1,0 +1,108 @@
+﻿<Window x:Class="BolovCircus.Windows.RegWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BolovCircus.Windows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="RegWindow" Height="750" Width="500">
+    <Grid>
+      
+        <StackPanel Grid.ColumnSpan="2" Margin="95,0,95,0">
+            <Button x:Name="btnLogoInfo"
+                    Margin="0 10"
+                    Width="104"
+                    Click="btnLogoInfo_Click"
+                    Height="104"
+                    Background="Transparent"
+                    BorderThickness="0">
+                <Image Source="\Resourses\logo.png"
+                       Width="100" 
+                       Height="100">
+                </Image>
+            </Button>
+
+            <Label Content="Регистрация"
+                   HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="txtbLoginReg"
+                     GotFocus="txtbLoginReg_GotFocus"
+                     LostFocus="txtbLoginReg_LostFocus"
+                     Text="Логин"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBlock Text="Придумайте пароль"
+                       HorizontalAlignment="Center"/>
+
+            <PasswordBox 
+                     x:Name="psbPasswordReg"
+                     HorizontalAlignment="Center"
+                     Width="150"
+                     Margin="0 10"/>
+
+            <TextBlock Text="Введите пароль повторно"
+                       HorizontalAlignment="Center"/>
+
+            <PasswordBox 
+                     x:Name="psbPasswordReg2"
+                     HorizontalAlignment="Center"
+                     Width="150"
+                     Margin="0 10"/>
+
+            <TextBox x:Name="txtbFirstNameReg"
+                     Text="Имя"
+                     GotFocus="txtbFirstNameReg_GotFocus"
+                     LostFocus="txtbFirstNameReg_LostFocus"
+                      Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBox x:Name="txtbLastNameNameReg"
+                     Text="Фамилия"
+                     GotFocus="txtbLastNameNameReg_GotFocus"
+                     LostFocus="txtbLastNameNameReg_LostFocus"
+                      Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <DatePicker Margin="0 10"
+                        x:Name="dpBirthday"
+                        Width="150"/>
+
+            <TextBox x:Name="txtbMailReg"
+                     Text="Почта"
+                     GotFocus="txtbMailReg_GotFocus"
+                     LostFocus="txtbMailReg_LostFocus"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <TextBox x:Name="txtbPhoneReg"
+                     Text="+7**********"
+                     GotFocus="txtbPhoneReg_GotFocus"
+                     LostFocus="txtbPhoneReg_LostFocus"
+                     Style="{StaticResource ResourceKey=TextBoxReg}"/>
+
+            <ComboBox x:Name="cmbGenderReg" 
+                      Margin="0 10"
+                      Width="150">
+
+            </ComboBox>
+
+            <ComboBox x:Name="cmbRoleReg"
+                      Margin="0 10"
+                      Width="150">
+
+            </ComboBox>
+         
+
+            <Button x:Name="btnOk"
+                    Content="Готово"
+                    Width="80"
+                    Click="btnOk_Click"
+                    Margin="10"
+                    HorizontalAlignment="Center"/>
+
+            
+            
+            
+        </StackPanel>
+        
+        
+    </Grid>
+</Window>

@@ -1,0 +1,73 @@
+﻿<Window x:Class="BolovCircus.Windows.Admin.ListClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BolovCircus.Windows.Admin"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ListClientWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="181*"/>
+            <RowDefinition Height="253*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnLogoInfo"
+                Margin="10"
+                    Height="105"
+                Width="105"
+                    VerticalAlignment="Top"
+                    Background="Transparent"
+                    BorderThickness="0">
+            <Image Source="\Resourses\logo.png"
+                       Width="100" 
+                       Height="100">
+            </Image>
+        </Button>
+        <Button x:Name="btnListOfStaffWindow"
+                Content="Список сотрудников"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" Margin="10,10,0,0" Height="40" Width="120"/>
+
+        <Button x:Name="btnListOfShowWindow"
+                Content="Список шоу"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right" Margin="0,10,10,0" Height="40" Width="120"/>
+
+        <TextBlock Text="Список клиентов"
+                   Height="24"
+                   VerticalAlignment="Bottom"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Width="150"/>
+        <Button x:Name="btnSaveChanges"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Content="Сохранить" Click="btnSaveChanges_Click"/>
+        <Button x:Name="btnDeleteClientFromAdmin"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Content="Удалить" Click="btnDeleteClientFromAdmin_Click"/>
+        <DataGrid Height="280"
+                  AutoGenerateColumns="False"
+                  x:Name="dgListOfClientForAdmins"
+                  VerticalAlignment="Top" 
+                  Grid.Row="1">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Номер" Binding="{Binding IDUser}" />
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
