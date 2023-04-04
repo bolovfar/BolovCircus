@@ -18,22 +18,33 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="242*"/>
         </Grid.RowDefinitions>
+        
         <Button x:Name="btnLogoInfo"
-                    Grid.Column="1"
-                    Background="Transparent"
-                    BorderThickness="0" Margin="33,8,33,8">
+                Grid.ColumnSpan="3"
+                Background="Transparent"
+                BorderThickness="0"
+                Width="120"
+                Height="120">
+            
             <Image Source="\Resourses\logo.png"
-                       Width="100" 
-                       Height="100">
+                   Width="100" 
+                   Height="100">
             </Image>
         </Button>
-        
-        
+        <Button x:Name="btnShow"
+                Style="{StaticResource ButtonAdmin}"
+                Content="Список шоу"
+                Margin="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" Click="btnShow_Click"/>
+
+
         <Label Content="Мои данные"
                HorizontalAlignment="Center"
                FontSize="16"
                FontWeight="Bold"
-               Grid.Column="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
                Grid.Row="1"/>
         <StackPanel
                     Grid.Row="2"
@@ -93,10 +104,17 @@
                       Margin="0 10"
                       Width="150">
             </ComboBox>
-            <Button x:Name="btnOk"
-                    Content="Готово"
-                    Width="100"/>
+            
         </StackPanel>
+        <Button x:Name="btnOk"
+                Content="Сохранить"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                Height="25"
+                FontSize="14"
+                VerticalAlignment="Bottom"
+                Margin="0 0 0 20"
+                Width="120"/>
 
         <Image Source="\Resourses\Kanye.png"
                        Width="100" 

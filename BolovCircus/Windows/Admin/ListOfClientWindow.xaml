@@ -16,6 +16,7 @@
                 Margin="10"
                     Height="105"
                 Width="105"
+                Click="btnLogoInfo_Click"
                     VerticalAlignment="Top"
                     Background="Transparent"
                     BorderThickness="0">
@@ -28,13 +29,13 @@
                 Content="Список сотрудников"
                 Style="{StaticResource ButtonAdmin}"
                 VerticalAlignment="Top"
-                HorizontalAlignment="Left" Margin="10,10,0,0" Height="40" Width="120"/>
+                HorizontalAlignment="Left" Margin="10,10,0,0" Height="40" Width="120" Click="btnListOfStaffWindow_Click"/>
 
         <Button x:Name="btnListOfShowWindow"
                 Content="Список шоу"
                 Style="{StaticResource ButtonAdmin}"
                 VerticalAlignment="Top"
-                HorizontalAlignment="Right" Margin="0,10,10,0" Height="40" Width="120"/>
+                HorizontalAlignment="Right" Margin="0,10,10,0" Height="40" Width="120" Click="btnListOfShowWindow_Click"/>
 
         <TextBlock Text="Список клиентов"
                    Height="24"
@@ -58,6 +59,7 @@
                   x:Name="dgListOfClientForAdmins"
                   VerticalAlignment="Top" 
                   Grid.Row="1">
+            
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Номер" Binding="{Binding IDUser}" />
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>

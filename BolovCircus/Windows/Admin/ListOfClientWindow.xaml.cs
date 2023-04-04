@@ -40,20 +40,39 @@ namespace BolovCircus.Windows.Admin
 
         private void btnDeleteClientFromAdmin_Click(object sender, RoutedEventArgs e)
         {
-            
             var deletedItem = dgListOfClientForAdmins.SelectedItems.Cast<Users>().ToList();
             if (MessageBox.Show($"Вы уверены?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question)==MessageBoxResult.Yes)
-            {
+            { 
+                //Не доделано
                     Context.Users.RemoveRange(deletedItem);
                     Context.SaveChanges();
-                    MessageBox.Show("Удалено");
                     dgListOfClientForAdmins.ItemsSource = Context.Users.ToList();
-            }
-
-           
+                    MessageBox.Show("Удалено");
+            }     
         }
 
-  
+        private void btnListOfStaffWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow listOfStaffWindow = new AdminWindow();
+            listOfStaffWindow.Show();
+            this.Close(); 
+        }
+
+        private void btnListOfShowWindow_Click(object sender, RoutedEventArgs e)
+        {
+            ListOfShowWindow listOfShowWindow = new ListOfShowWindow();
+            listOfShowWindow.Show();
+            this.Close();
+        }
+
+        private void btnLogoInfo_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.Show();
+            
+        }
+
+
 
 
 

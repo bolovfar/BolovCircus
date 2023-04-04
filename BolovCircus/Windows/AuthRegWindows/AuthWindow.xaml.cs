@@ -25,10 +25,13 @@ namespace BolovCircus
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
+        public static int IDAuth;
         public MainWindow()
         {
+            
             InitializeComponent();
             getUserRole();
             getCaptcha();
@@ -84,11 +87,14 @@ namespace BolovCircus
         //Кнопка авторизации
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
+
             var auth = Context.Users.ToList().Where(i => i.Login == txtbLogin.Text && i.Password == psbPassword.Password && i.IDRole == cmbUserRole.SelectedIndex+1).FirstOrDefault();
             if (auth != null && auth.IDRole == 1 && txtCatcha.Text == txtCapthcaChek.Text) //условие для перехода на окна 
             {
+                
                 if (auth.IDRole == 1) 
                 {//Переход на окна админа
+                    IDAuth = auth.IDUser;
                     ListOfShowWindow listOfShowWindow = new ListOfShowWindow();
                     listOfShowWindow.Show();
                     this.Close();
@@ -96,6 +102,7 @@ namespace BolovCircus
                 }
                 else
                 {   //Переход на окна клиента
+                    IDAuth = auth.IDUser;
                     MyAccountWindow myAccountWindow = new MyAccountWindow();
                     myAccountWindow.Show();
                     this.Close();

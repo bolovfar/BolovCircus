@@ -8,46 +8,74 @@
         WindowStartupLocation="CenterScreen"
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
-      
-            <Button x:Name="btnLogoInfo"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="169*"/>
+            <RowDefinition Height="265*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnLogoInfo"
                     VerticalAlignment="Top"
-                    Margin="0 10"
-                    Width="104"
-                    Height="104"
+                    Margin="10"
+                HorizontalAlignment="Center"
+                    Height="120"
+                    Width="120"
                     Background="Transparent"
+                Click="btnLogoInfo_Click"
                     BorderThickness="0">
-                <Image Source="\Resourses\logo.png"
+            <Image Source="\Resourses\logo.png"
                        Width="100" 
                        Height="100">
-                </Image>
-            </Button>
-            <Button x:Name="btnListOfClientWindow"
+            </Image>
+        </Button>
+        <Button x:Name="btnListOfClientWindow"
                     Content="Список клиентов"
                     Style="{StaticResource ButtonAdmin}"
                     VerticalAlignment="Top"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left" Margin="10,10,0,0" Height="40" Width="120" Click="btnListOfClientWindow_Click"/>
 
-            <Button x:Name="btnListOfShowWindow"
+        <Button x:Name="btnListOfShowWindow"
                     Content="Список шоу"
                     Style="{StaticResource ButtonAdmin}"
                     VerticalAlignment="Top"
-                    HorizontalAlignment="Right"/>
+                    HorizontalAlignment="Right" Margin="0,10,10,0" Height="40" Width="120" Click="btnListOfShowWindow_Click"/>
         <TextBlock Text="Список сотрудников"
                    HorizontalAlignment="Center"
-                   Margin="0 120 "/>
-        
+                   VerticalAlignment="Bottom"
+                   Margin="10"
+                   FontSize="16"
+                    FontWeight="Bold"/>
+        <Button x:Name="btnSaveChanges"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Content="Сохранить" Click="btnSaveChanges_Click" 
+                Margin="0,0,10,10"
+                Height="40" 
+                Width="120"/>
+        <Button x:Name="btnDeleteClientFromAdmin"
+                Style="{StaticResource ButtonAdmin}"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Content="Удалить"
+                Click="btnDeleteClientFromAdmin_Click" 
+                Margin="10,0,0,10"
+                Height="40" Width="120"/>
         <DataGrid Height="280"
-                      VerticalAlignment="Bottom">
-                <DataGrid.Columns >
-                    <DataGridTextColumn Header="Номер"/>
-                    <DataGridTextColumn Header="Логин"/>
-                    <DataGridTextColumn Header="Пароль"/>
-                    <DataGridTextColumn Header="Имя"/>
-                    <DataGridTextColumn Header="Фамилия"/>
-                    <DataGridTextColumn Header="Телефон"/>
-                    <DataGridTextColumn Header="Дата рождения"/>
-                    <DataGridTextColumn Header="Пол"/>
-                </DataGrid.Columns>
-            </DataGrid>
+                  x:Name="dgListOfStaffForAdmin"
+                  VerticalAlignment="Top"
+                  AutoGenerateColumns="False"
+                  Grid.Row="1">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Номер" Binding="{Binding IDUser}" />
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Role.Name}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
