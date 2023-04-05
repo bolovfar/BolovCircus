@@ -33,7 +33,6 @@ namespace BolovCircus
         {
             
             InitializeComponent();
-            getUserRole();
             getCaptcha();
         }
 
@@ -66,15 +65,6 @@ namespace BolovCircus
             }
             
         }
-
-
-        //Получение роли пользователя для упрощения дальнейшей навигации
-        public void getUserRole()
-        {
-            cmbUserRole.ItemsSource = Context.Role.ToList();
-            cmbUserRole.SelectedIndex = 0;
-            cmbUserRole.DisplayMemberPath = "Name";
-        }
         //Кнопка регистрации в окне авторизации
         private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -85,37 +75,32 @@ namespace BolovCircus
         
 
         //Кнопка авторизации
-        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        public void btnAuth_Click(object sender, RoutedEventArgs e)
         {
 
-            var auth = Context.Users.ToList().Where(i => i.Login == txtbLogin.Text && i.Password == psbPassword.Password && i.IDRole == cmbUserRole.SelectedIndex+1).FirstOrDefault();
-            if (auth != null && auth.IDRole == 1 && txtCatcha.Text == txtCapthcaChek.Text) //условие для перехода на окна 
+            var auth = Context.Users.ToList().Where(i => i.Login == txtbLogin.Text && i.Password == psbPassword.Password).FirstOrDefault();
+            if (auth != null && txtCatcha.Text == txtCapthcaChek.Text && auth.IDRole == 1) //условие для перехода на окна админа
             {
-                
-                if (auth.IDRole == 1) 
-                {//Переход на окна админа
-                    IDAuth = auth.IDUser;
-                    ListOfShowWindow listOfShowWindow = new ListOfShowWindow();
-                    listOfShowWindow.Show();
-                    this.Close();
-                    MessageBox.Show($"Авторизация админа успешно произведена. Здравствуйте, {auth.FirstName} {auth.LastName}!");
-                }
-                else
-                {   //Переход на окна клиента
-                    IDAuth = auth.IDUser;
-                    MyAccountWindow myAccountWindow = new MyAccountWindow();
-                    myAccountWindow.Show();
-                    this.Close();
-                    MessageBox.Show($"Авторизация клиента прошла успешно. Здравствуйте, {auth.FirstName} {auth.LastName}!") ;
-                }
-                
-                
+                IDAuth = auth.IDUser;
+                ListOfShowWindow listOfShowWindow = new ListOfShowWindow();
+                listOfShowWindow.Show();
+                this.Close();
+                MessageBox.Show($"Авторизация админа успешно произведена. Здравствуйте, админ {auth.FirstName} {auth.LastName}!");
+            }
+            else if (auth != null && txtCatcha.Text == txtCapthcaChek.Text && auth.IDRole == 2)//Переход на окна клиента
+            {   
+                IDAuth = auth.IDUser;
+                MyAccountWindow myAccountWindow = new MyAccountWindow();
+                myAccountWindow.Show();
+                this.Close();
+                MessageBox.Show($"Авторизация клиента прошла успешно. Здравствуйте, клиент {auth.FirstName} {auth.LastName}!");
             }
             else //Ошибка авторизации
             {
                 MessageBox.Show("ошибка авторизации");
-                getCaptcha();
                 txtCapthcaChek.Clear();
+                getCaptcha();
+
             }
         }
 
@@ -123,7 +108,6 @@ namespace BolovCircus
         {
             InfoWindow infoWindow = new InfoWindow();
             infoWindow.Show();
-            this.Close();
         }
     }
 }

@@ -25,6 +25,8 @@
             </Button>
 
             <Label Content="Авторизация"
+                   FontSize="14"
+                   FontWeight="Bold"
                    HorizontalAlignment="Center"/>
             
             <TextBox x:Name="txtbLogin"
@@ -32,15 +34,13 @@
                      Width="150"
                      Margin="0 10" 
                      GotFocus="txtbLogin_GotFocus" 
-                     LostFocus="txtbLogin_LostFocus"/> 
+                     LostFocus="txtbLogin_LostFocus"/>
 
             <PasswordBox 
                      
                      x:Name="psbPassword"
                      Width="150"
                      Margin="0 10"/>
-
-            <ComboBox x:Name="cmbUserRole"/>
             <Border 
                 Width="150"
                 Height="30"
